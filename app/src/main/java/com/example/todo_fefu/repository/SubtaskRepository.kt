@@ -12,19 +12,19 @@ class SubtaskRepository(private val subtaskDao: SubtaskDao) {
         return subtaskDao.getAllSubtasks(id)
     }
 
-    suspend fun addTask(subtask: Subtask) {
+    suspend fun addSubtask(subtask: Subtask) {
         subtaskDao.addSubtask(subtask)
     }
 
-    suspend fun updateTask(subtask: Subtask) {
+    suspend fun updateSubtask(subtask: Subtask) {
         subtaskDao.updateSubtask(subtask)
     }
 
-    suspend fun deleteTask(subtask: Subtask) {
+    suspend fun deleteSubtask(subtask: Subtask) {
         subtaskDao.deleteSubtask(subtask)
     }
 
-    suspend fun deleteTasksFromLists(list_id: Int) {
+    suspend fun deleteSubtasksFromLists(list_id: Int) {
         subtaskDao.deleteSubtaskFromList(list_id)
     }
 }
