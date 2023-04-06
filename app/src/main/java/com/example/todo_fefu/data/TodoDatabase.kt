@@ -4,13 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.todo_fefu.data.task.Lists
+import com.example.todo_fefu.data.task.ListsDao
 import com.example.todo_fefu.data.task.Task
 import com.example.todo_fefu.data.task.TaskDao
 
-@Database(entities = [Task::class], version = 1, exportSchema = false)
+@Database(entities = [Task::class, Lists::class], version = 1, exportSchema = false)
 abstract class TodoDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
+
+    abstract fun listDao(): ListsDao
 
     companion object {
 
