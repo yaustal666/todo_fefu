@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,16 +35,20 @@ class TaskFragment : Fragment() {
         val view = binding.root
 
         binding.addTaskButton.setOnClickListener() {
-            findNavController().navigate(R.id.action_tasksFragment_to_addTaskFragment)
+            val action = TaskFragmentDirections.actionTasksFragmentToAddTaskFragment(args.currentLists)
+            findNavController().navigate(action)
         }
 
+        mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
+        mTaskViewModel.getAllTasksFromLists(args)
 
         val adapter = TaskAdapter()
         val recyclerView = binding.tasksRecycler
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
         mTaskViewModel.getAllTasks.observe(viewLifecycleOwner, Observer { task ->
             adapter.setData(task)
         })

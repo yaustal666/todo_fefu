@@ -6,20 +6,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.todo_fefu.data.TodoDatabase
 import com.example.todo_fefu.data.task.Task
+import com.example.todo_fefu.fragments.task.TaskFragmentArgs
 import com.example.todo_fefu.repository.TaskRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TaskViewModel(application: Application): AndroidViewModel(application) {
 
-    val getAllTasks: LiveData<List<Task>>
+    lateinit var getAllTasks: LiveData<List<Task>>
     private val repository: TaskRepository
+    private lateinit var args : TaskFragmentArgs
 
     init {
         val taskDao = TodoDatabase.getDatabase(application).taskDao()
         repository = TaskRepository(taskDao)
-        getAllTasks = repository.getAllTasks
-
     }
 
     fun addTask(task: Task){
@@ -38,5 +38,16 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteTask(task)
         }
+    }
+
+    fun deleteTasksFromLists(list_id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteTasksFromLists(list_id)
+        }
+    }
+
+    fun getAllTasksFromLists(taskFragmentArgs: TaskFragmentArgs){
+        args = taskFragmentArgs
+        getAllTasks = repository.getAllTasks(args.currentLists.id)
     }
 }

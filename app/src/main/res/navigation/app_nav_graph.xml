@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_addTaskFragment_to_tasksFragment"
             app:destination="@id/tasksFragment" />
+        <argument
+            android:name="currentLists"
+            app:argType="com.example.todo_fefu.data.task.Lists" />
     </fragment>
     <fragment
         android:id="@+id/updateTaskFragment"

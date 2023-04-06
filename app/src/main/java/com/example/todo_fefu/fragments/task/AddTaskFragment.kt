@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.todo_fefu.R
 import com.example.todo_fefu.ViewModel.TaskViewModel
 import com.example.todo_fefu.data.task.Task
@@ -16,6 +17,8 @@ import com.example.todo_fefu.databinding.FragmentAddTaskBinding
 
 
 class AddTaskFragment : Fragment() {
+
+    private val args by navArgs<AddTaskFragmentArgs>()
 
     private var _binding: FragmentAddTaskBinding? = null
 
@@ -47,12 +50,13 @@ class AddTaskFragment : Fragment() {
 
 
         if(inputValidate(title, description, date)){
-            val task = Task(0, 0, title, description, date, false)
+            val task = Task(0, args.currentLists.id, title, description, date, false)
             mTaskViewModel.addTask(task)
 
             Toast.makeText(requireContext(), "Successfully added!!!", Toast.LENGTH_LONG).show()
 
-            findNavController().navigate(R.id.action_addTaskFragment_to_tasksFragment)
+            val action = AddTaskFragmentDirections.actionAddTaskFragmentToTasksFragment(this.args.currentLists)
+            findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Fill all inputs!!!", Toast.LENGTH_LONG).show()
         }

@@ -29,6 +29,7 @@ class UpdateListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mListsViewModel: ListsViewModel
+    private lateinit var mTaskViewModel: TaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +39,7 @@ class UpdateListFragment : Fragment() {
         val view = binding.root
 
         mListsViewModel = ViewModelProvider(this).get(ListsViewModel::class.java)
+        mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
         binding.updateListsTitle.setText(args.currentLists.title)
 
@@ -77,6 +79,8 @@ class UpdateListFragment : Fragment() {
 
     private fun deleteListsFromDatabase() {
         mListsViewModel.deleteLists(args.currentLists)
+        mTaskViewModel.deleteTasksFromLists(args.currentLists.id)
+
         Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()
         findNavController().navigate(R.id.action_updateListFragment_to_listsFragment)
     }
