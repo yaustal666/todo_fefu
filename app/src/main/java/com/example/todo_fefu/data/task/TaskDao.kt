@@ -7,7 +7,7 @@ import androidx.room.*
 interface TaskDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addTask(tak: Task)
+    suspend fun addTask(task: Task)
 
     @Update
     suspend fun updateTask(task: Task)
