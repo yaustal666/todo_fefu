@@ -43,6 +43,11 @@ class UpdateTaskFragment : Fragment() {
         binding.confirmUpdateTaskButton.setOnClickListener() {
             updateTaskInDatabase()
         }
+
+        binding.deleteTaskButton.setOnClickListener(){
+            deleteTaskFromDatabase()
+        }
+
         return view
     }
 
@@ -53,11 +58,12 @@ class UpdateTaskFragment : Fragment() {
 
 
         if (inputValidate(title, description, date)) {
-            val task = Task(args.currentTask.id, args.currentTask.list_id, title, description, date, false)
+            val task =
+                Task(args.currentTask.id, args.currentTask.list_id, title, description, date, false)
 
             mTaskViewModel.updateTask(task)
 
-            Toast.makeText(requireContext(), "Successfully added!!!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Successfully updated!!!", Toast.LENGTH_LONG).show()
 
             findNavController().navigate(R.id.action_updateTaskFragment_to_tasksFragment)
         } else {
@@ -69,6 +75,12 @@ class UpdateTaskFragment : Fragment() {
         return !(TextUtils.isEmpty(title) && TextUtils.isEmpty(description) && TextUtils.isEmpty(
             date
         ))
+    }
+
+    private fun deleteTaskFromDatabase() {
+        mTaskViewModel.deleteTask(args.currentTask)
+        Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_updateTaskFragment_to_tasksFragment)
     }
 
     override fun onDestroyView() {

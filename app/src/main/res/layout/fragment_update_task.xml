@@ -61,4 +61,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:focusable="true"
         android:contentDescription="Confirm" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_task_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true"
+        android:contentDescription="Delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>
