@@ -60,7 +60,7 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun inputValidate(title: String, description: String, date: String): Boolean{
-        return (TextUtils.isEmpty(title) && TextUtils.isEmpty(description) && TextUtils.isEmpty(date))
+        return !(TextUtils.isEmpty(title) && TextUtils.isEmpty(description) && TextUtils.isEmpty(date))
     }
 
     override fun onDestroyView() {
