@@ -15,6 +15,6 @@ interface ListsDao {
     @Delete
     suspend fun deleteLists(lists: Lists)
 
-    @Query("SELECT * FROM tasks ORDER BY id")
+    @Query("SELECT * FROM lists ORDER BY id")
     fun getAllLists(): LiveData<List<Lists>>
 }

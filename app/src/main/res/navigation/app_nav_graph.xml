@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/tasksFragment">
+    app:startDestination="@id/listsFragment">
 
     <fragment
         android:id="@+id/tasksFragment"
-        android:name="com.example.todo_fefu.fragments.TaskFragment"
+        android:name="com.example.todo_fefu.fragments.task.TaskFragment"
         android:label="Tasks"
         tools:layout="@layout/fragment_tasks" >
         <action
@@ -16,10 +16,16 @@
         <action
             android:id="@+id/action_tasksFragment_to_updateTaskFragment"
             app:destination="@id/updateTaskFragment" />
+        <action
+            android:id="@+id/action_tasksFragment_to_listsFragment"
+            app:destination="@id/listsFragment" />
+        <argument
+            android:name="currentLists"
+            app:argType="com.example.todo_fefu.data.task.Lists" />
     </fragment>
     <fragment
         android:id="@+id/addTaskFragment"
-        android:name="com.example.todo_fefu.fragments.AddTaskFragment"
+        android:name="com.example.todo_fefu.fragments.task.AddTaskFragment"
         android:label="Create Task"
         tools:layout="@layout/fragment_add_task" >
         <action
@@ -28,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateTaskFragment"
-        android:name="com.example.todo_fefu.fragments.UpdateTaskFragment"
+        android:name="com.example.todo_fefu.fragments.task.UpdateTaskFragment"
         android:label="Update Task" >
         <action
             android:id="@+id/action_updateTaskFragment_to_tasksFragment"
@@ -36,5 +42,41 @@
         <argument
             android:name="currentTask"
             app:argType="com.example.todo_fefu.data.task.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/listsFragment"
+        android:name="com.example.todo_fefu.fragments.list.ListsFragment"
+        android:label="fragment_lists"
+        tools:layout="@layout/fragment_lists" >
+        <action
+            android:id="@+id/action_listsFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/action_listsFragment_to_addListFragment"
+            app:destination="@id/addListFragment" />
+        <action
+            android:id="@+id/action_listsFragment_to_updateListFragment"
+            app:destination="@id/updateListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addListFragment"
+        android:name="com.example.todo_fefu.fragments.list.AddListFragment"
+        android:label="fragment_add_list"
+        tools:layout="@layout/fragment_add_list" >
+        <action
+            android:id="@+id/action_addListFragment_to_listsFragment"
+            app:destination="@id/listsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateListFragment"
+        android:name="com.example.todo_fefu.fragments.list.UpdateListFragment"
+        android:label="fragment_update_list"
+        tools:layout="@layout/fragment_update_list" >
+        <action
+            android:id="@+id/action_updateListFragment_to_listsFragment"
+            app:destination="@id/listsFragment" />
+        <argument
+            android:name="currentLists"
+            app:argType="com.example.todo_fefu.data.task.Lists" />
     </fragment>
 </navigation>

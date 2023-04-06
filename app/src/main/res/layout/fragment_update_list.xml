@@ -8,49 +8,21 @@
 
 
     <EditText
-        android:id="@+id/update_title"
+        android:id="@+id/update_lists_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:hint="Title" />
 
-    <EditText
-        android:id="@+id/update_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_title"
-        android:hint="Description" />
-
-    <EditText
-        android:id="@+id/update_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Date"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_description" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/confirm_update_task_button"
+        android:id="@+id/confirm_update_lists_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
@@ -63,7 +35,7 @@
         android:contentDescription="Confirm" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_task_button"
+        android:id="@+id/delete_lists_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -72,6 +44,6 @@
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true"
-        android:contentDescription="Delete" />
+        android:contentDescription="Delete"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

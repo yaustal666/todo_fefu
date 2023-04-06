@@ -1,4 +1,4 @@
-package com.example.todo_fefu.fragments
+package com.example.todo_fefu.fragments.task
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo_fefu.R
 import com.example.todo_fefu.ViewModel.TaskViewModel
@@ -16,6 +17,8 @@ import com.example.todo_fefu.databinding.FragmentTasksBinding
 
 
 class TaskFragment : Fragment() {
+
+    private val args by navArgs<TaskFragmentArgs>()
 
     private var _binding: FragmentTasksBinding? = null
 
@@ -30,9 +33,10 @@ class TaskFragment : Fragment() {
         _binding = FragmentTasksBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.addTaskButton.setOnClickListener(){
+        binding.addTaskButton.setOnClickListener() {
             findNavController().navigate(R.id.action_tasksFragment_to_addTaskFragment)
         }
+
 
         val adapter = TaskAdapter()
         val recyclerView = binding.tasksRecycler
@@ -40,8 +44,8 @@ class TaskFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
-        mTaskViewModel.getAllTasks.observe(viewLifecycleOwner, Observer {user ->
-            adapter.setData(user)
+        mTaskViewModel.getAllTasks.observe(viewLifecycleOwner, Observer { task ->
+            adapter.setData(task)
         })
 
         return view

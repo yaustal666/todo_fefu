@@ -1,4 +1,4 @@
-package com.example.todo_fefu.fragments
+package com.example.todo_fefu.fragments.task
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -13,8 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.todo_fefu.R
 import com.example.todo_fefu.ViewModel.TaskViewModel
 import com.example.todo_fefu.data.task.Task
-import com.example.todo_fefu.databinding.FragmentTasksBinding
 import com.example.todo_fefu.databinding.FragmentUpdateTaskBinding
+import com.example.todo_fefu.fragments.task.UpdateTaskFragmentArgs
 
 class UpdateTaskFragment : Fragment() {
 
