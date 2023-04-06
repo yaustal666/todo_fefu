@@ -3,10 +3,12 @@ package com.example.todo_fefu.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo_fefu.R
 import com.example.todo_fefu.data.task.Task
 import com.example.todo_fefu.databinding.TaskRecyclerElementBinding
+import com.example.todo_fefu.fragments.TaskFragmentDirections
 
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
 
@@ -34,6 +36,11 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
         holder.binding.tRecyclerElementTitle.text = currentItem.title
         holder.binding.tRecyclerElementDescription.text = currentItem.description
         holder.binding.tRecyclerElementDate.text = currentItem.date
+
+        holder.binding.UpdateTaskButton.setOnClickListener(){
+            val action = TaskFragmentDirections.actionTasksFragmentToUpdateTaskFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     fun setData(task: List<Task>) {

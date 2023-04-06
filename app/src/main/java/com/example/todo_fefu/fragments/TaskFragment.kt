@@ -15,7 +15,7 @@ import com.example.todo_fefu.adapters.TaskAdapter
 import com.example.todo_fefu.databinding.FragmentTasksBinding
 
 
-class TasksFragment : Fragment() {
+class TaskFragment : Fragment() {
 
     private var _binding: FragmentTasksBinding? = null
 
