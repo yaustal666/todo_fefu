@@ -65,7 +65,8 @@ class UpdateTaskFragment : Fragment() {
 
             Toast.makeText(requireContext(), "Successfully updated!!!", Toast.LENGTH_LONG).show()
 
-            findNavController().navigate(R.id.action_updateTaskFragment_to_tasksFragment)
+            val action = UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
+            findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Fill all inputs!!!", Toast.LENGTH_LONG).show()
         }
@@ -80,7 +81,8 @@ class UpdateTaskFragment : Fragment() {
     private fun deleteTaskFromDatabase() {
         mTaskViewModel.deleteTask(args.currentTask)
         Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()
-        findNavController().navigate(R.id.action_updateTaskFragment_to_tasksFragment)
+        val action = UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

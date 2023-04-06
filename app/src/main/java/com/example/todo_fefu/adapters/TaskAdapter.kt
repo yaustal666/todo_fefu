@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo_fefu.R
+import com.example.todo_fefu.data.task.Lists
 import com.example.todo_fefu.data.task.Task
 import com.example.todo_fefu.databinding.TaskRecyclerElementBinding
 import com.example.todo_fefu.fragments.task.TaskFragmentDirections
@@ -15,6 +16,8 @@ import com.example.todo_fefu.fragments.task.TaskFragmentDirections
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
 
     private var taskList = emptyList<Task>()
+
+    private var currentLists = Lists(0, "a")
 
     class MyViewHolder(val binding: TaskRecyclerElementBinding): RecyclerView.ViewHolder(binding.root) {
 
@@ -40,7 +43,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
         holder.binding.tRecyclerElementDate.text = currentItem.date
 
         holder.binding.UpdateTaskButton.setOnClickListener(){
-            val action = TaskFragmentDirections.actionTasksFragmentToUpdateTaskFragment(currentItem)
+            val action = TaskFragmentDirections.actionTasksFragmentToUpdateTaskFragment(currentItem, currentLists)
             holder.itemView.findNavController().navigate(action)
         }
     }
@@ -48,6 +51,12 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
     fun setData(task: List<Task>) {
         this.taskList = task
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(lists: Lists) {
+        this.currentLists = lists
         notifyDataSetChanged()
     }
 }

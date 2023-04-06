@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:paddingStart="24dp"
     android:paddingTop="10dp"
-    android:id="@+id/go_to_tasks_button">
+    android:layout_marginBottom="5dp"
+    android:id="@+id/go_to_tasks_button"
+    android:background="@drawable/my_border">
 
     <TextView
         android:id="@+id/l_recycler_element_id"

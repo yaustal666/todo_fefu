@@ -51,6 +51,7 @@ class TaskFragment : Fragment() {
 
         mTaskViewModel.getAllTasks.observe(viewLifecycleOwner, Observer { task ->
             adapter.setData(task)
+            adapter.setList(args.currentLists)
         })
 
         return view

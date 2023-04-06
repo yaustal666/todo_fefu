@@ -45,6 +45,9 @@
         <argument
             android:name="currentTask"
             app:argType="com.example.todo_fefu.data.task.Task" />
+        <argument
+            android:name="currentLists"
+            app:argType="com.example.todo_fefu.data.task.Lists" />
     </fragment>
     <fragment
         android:id="@+id/listsFragment"
