@@ -8,7 +8,7 @@ import com.example.todo_fefu.data.task.TaskDao
 
 class SubtaskRepository(private val subtaskDao: SubtaskDao) {
 
-    fun getAllSubtasks(id: Int) : LiveData<List<Task>>{
+    fun getAllSubtasks(id: Int) : LiveData<List<Subtask>>{
         return subtaskDao.getAllSubtasks(id)
     }
 

@@ -48,6 +48,9 @@
         <argument
             android:name="currentLists"
             app:argType="com.example.todo_fefu.data.task.Lists" />
+        <action
+            android:id="@+id/action_updateTaskFragment_to_subtasksFragment"
+            app:destination="@id/subtasksFragment" />
     </fragment>
     <fragment
         android:id="@+id/listsFragment"
@@ -84,5 +87,50 @@
         <argument
             android:name="currentLists"
             app:argType="com.example.todo_fefu.data.task.Lists" />
+    </fragment>
+    <fragment
+        android:id="@+id/subtasksFragment"
+        android:name="com.example.todo_fefu.fragments.subtask.SubtasksFragment"
+        android:label="fragment_subtasks"
+        tools:layout="@layout/fragment_subtasks" >
+        <action
+            android:id="@+id/action_subtasksFragment_to_updateTaskFragment"
+            app:destination="@id/updateTaskFragment" />
+        <action
+            android:id="@+id/action_subtasksFragment_to_addSubtaskFragment"
+            app:destination="@id/addSubtaskFragment" />
+        <action
+            android:id="@+id/action_subtasksFragment_to_updateSubtaskFragment"
+            app:destination="@id/updateSubtaskFragment" />
+        <argument
+            android:name="currentTask"
+            app:argType="com.example.todo_fefu.data.task.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSubtaskFragment"
+        android:name="com.example.todo_fefu.fragments.subtask.AddSubtaskFragment"
+        android:label="fragment_add_subtask"
+        tools:layout="@layout/fragment_add_subtask" >
+        <action
+            android:id="@+id/action_addSubtaskFragment_to_subtasksFragment"
+            app:destination="@id/subtasksFragment" />
+        <argument
+            android:name="currentTask"
+            app:argType="com.example.todo_fefu.data.task.Task" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateSubtaskFragment"
+        android:name="com.example.todo_fefu.fragments.subtask.UpdateSubtaskFragment"
+        android:label="fragment_update_subtask"
+        tools:layout="@layout/fragment_update_subtask" >
+        <action
+            android:id="@+id/action_updateSubtaskFragment_to_subtasksFragment"
+            app:destination="@id/subtasksFragment" />
+        <argument
+            android:name="currentTask"
+            app:argType="com.example.todo_fefu.data.task.Task" />
+        <argument
+            android:name="currentSubtask"
+            app:argType="com.example.todo_fefu.data.task.Subtask" />
     </fragment>
 </navigation>

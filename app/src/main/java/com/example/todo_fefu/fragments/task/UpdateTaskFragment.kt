@@ -44,8 +44,15 @@ class UpdateTaskFragment : Fragment() {
             updateTaskInDatabase()
         }
 
-        binding.deleteTaskButton.setOnClickListener(){
+        binding.deleteTaskButton.setOnClickListener() {
             deleteTaskFromDatabase()
+        }
+
+        binding.goToSubtasksButton.setOnClickListener() {
+            val action =
+                UpdateTaskFragmentDirections.actionUpdateTaskFragmentToSubtasksFragment(args.currentTask)
+            findNavController()
+                .navigate(action)
         }
 
         return view
@@ -65,7 +72,8 @@ class UpdateTaskFragment : Fragment() {
 
             Toast.makeText(requireContext(), "Successfully updated!!!", Toast.LENGTH_LONG).show()
 
-            val action = UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
+            val action =
+                UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
             findNavController().navigate(action)
         } else {
             Toast.makeText(requireContext(), "Fill all inputs!!!", Toast.LENGTH_LONG).show()
@@ -81,7 +89,8 @@ class UpdateTaskFragment : Fragment() {
     private fun deleteTaskFromDatabase() {
         mTaskViewModel.deleteTask(args.currentTask)
         Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()
-        val action = UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
+        val action =
+            UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
         findNavController().navigate(action)
     }
 

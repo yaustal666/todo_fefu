@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/update_title"
+        android:id="@+id/update_subtask_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -22,7 +22,7 @@
         android:hint="Title" />
 
     <EditText
-        android:id="@+id/update_description"
+        android:id="@+id/update_subtask_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -32,11 +32,11 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_title"
+        app:layout_constraintTop_toBottomOf="@+id/update_subtask_title"
         android:hint="Description" />
 
     <EditText
-        android:id="@+id/update_date"
+        android:id="@+id/update_subtask_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -47,10 +47,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_description" />
+        app:layout_constraintTop_toBottomOf="@+id/update_subtask_description" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/confirm_update_task_button"
+        android:id="@+id/confirm_update_subtask_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
@@ -63,7 +63,7 @@
         android:contentDescription="Confirm" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_task_button"
+        android:id="@+id/delete_subtask_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -75,14 +75,4 @@
         android:focusable="true"
         android:contentDescription="Delete" />
 
-    <Button
-        android:id="@+id/go_to_subtasks_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="186dp"
-        android:text="Subtasks"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_date" />
 </androidx.constraintlayout.widget.ConstraintLayout>
