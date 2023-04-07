@@ -47,10 +47,11 @@ class AddTaskFragment : Fragment() {
         val title = binding.editTitle.text.toString()
         val description = binding.editDescription.text.toString()
         val date = binding.editDate.text.toString()
+        val favorite = binding.isFavoriteCheckbox.isChecked
 
 
         if(inputValidate(title, description, date)){
-            val task = Task(0, args.currentLists.id, title, description, date, false)
+            val task = Task(0, args.currentLists.id, title, description, date, favorite)
             mTaskViewModel.addTask(task)
 
             Toast.makeText(requireContext(), "Successfully added!!!", Toast.LENGTH_LONG).show()

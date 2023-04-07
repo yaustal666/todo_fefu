@@ -41,6 +41,7 @@ class UpdateTaskFragment : Fragment() {
         binding.updateTitle.setText(args.currentTask.title)
         binding.updateDescription.setText(args.currentTask.description)
         binding.updateDate.setText(args.currentTask.date)
+        binding.updateFavorite.isChecked = args.currentTask.favorite
 
 
         binding.confirmUpdateTaskButton.setOnClickListener() {
@@ -65,11 +66,12 @@ class UpdateTaskFragment : Fragment() {
         val title = binding.updateTitle.text.toString()
         val description = binding.updateDescription.text.toString()
         val date = binding.updateDate.text.toString()
+        val favorite = binding.updateFavorite.isChecked
 
 
         if (inputValidate(title, description, date)) {
             val task =
-                Task(args.currentTask.id, args.currentTask.list_id, title, description, date, false)
+                Task(args.currentTask.id, args.currentTask.list_id, title, description, date, favorite)
 
             mTaskViewModel.updateTask(task)
 

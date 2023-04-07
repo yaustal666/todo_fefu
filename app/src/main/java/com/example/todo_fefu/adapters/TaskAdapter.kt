@@ -41,6 +41,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
         holder.binding.tRecyclerElementTitle.text = currentItem.title
         holder.binding.tRecyclerElementDescription.text = currentItem.description
         holder.binding.tRecyclerElementDate.text = currentItem.date
+        holder.binding.isTaskFavorite.isChecked = currentItem.favorite
 
         holder.binding.UpdateTaskButton.setOnClickListener(){
             val action = TaskFragmentDirections.actionTasksFragmentToUpdateTaskFragment(currentItem, currentLists)

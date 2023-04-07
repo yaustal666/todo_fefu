@@ -18,6 +18,6 @@ interface TaskDao {
     @Query("DELETE FROM tasks WHERE list_id = :list_id")
     suspend fun deleteTasksFromList(list_id: Int)
 
-    @Query("SELECT * FROM tasks WHERE list_id = :list_id ORDER BY id")
+    @Query("SELECT * FROM tasks WHERE list_id = :list_id ORDER BY favorite")
     fun getAllTasks(list_id: Int): LiveData<List<Task>>
 }
