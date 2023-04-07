@@ -43,9 +43,15 @@ class SubtaskViewModel(application: Application): AndroidViewModel(application) 
         }
     }
 
-    fun deleteSubtasksFromTask(list_id: Int){
+    fun deleteSubtasksFromTask(task_id: Int){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteSubtasksFromLists(list_id)
+            repository.deleteSubtasksFromTask(task_id)
+        }
+    }
+
+    fun deleteSubtasksFromList(list_id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteSubtasksFromList(list_id)
         }
     }
 

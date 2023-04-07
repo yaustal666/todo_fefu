@@ -24,7 +24,11 @@ class SubtaskRepository(private val subtaskDao: SubtaskDao) {
         subtaskDao.deleteSubtask(subtask)
     }
 
-    suspend fun deleteSubtasksFromLists(list_id: Int) {
+    suspend fun deleteSubtasksFromTask(task_id: Int) {
+        subtaskDao.deleteSubtaskFromTask(task_id)
+    }
+
+    suspend fun deleteSubtasksFromList(list_id: Int) {
         subtaskDao.deleteSubtaskFromList(list_id)
     }
 }

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todo_fefu.R
 import com.example.todo_fefu.ViewModel.ListsViewModel
+import com.example.todo_fefu.ViewModel.SubtaskViewModel
 import com.example.todo_fefu.ViewModel.TaskViewModel
 import com.example.todo_fefu.data.task.Lists
 import com.example.todo_fefu.data.task.Task
@@ -30,6 +31,7 @@ class UpdateListFragment : Fragment() {
 
     private lateinit var mListsViewModel: ListsViewModel
     private lateinit var mTaskViewModel: TaskViewModel
+    private lateinit var mSubtaskViewModel: SubtaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +42,7 @@ class UpdateListFragment : Fragment() {
 
         mListsViewModel = ViewModelProvider(this).get(ListsViewModel::class.java)
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        mSubtaskViewModel = ViewModelProvider(this).get(SubtaskViewModel::class.java)
 
         binding.updateListsTitle.setText(args.currentLists.title)
 
@@ -79,6 +82,7 @@ class UpdateListFragment : Fragment() {
 
     private fun deleteListsFromDatabase() {
         mListsViewModel.deleteLists(args.currentLists)
+        mSubtaskViewModel.deleteSubtasksFromList(args.currentLists.id)
         mTaskViewModel.deleteTasksFromLists(args.currentLists.id)
 
         Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()

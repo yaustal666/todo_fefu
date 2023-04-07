@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todo_fefu.R
+import com.example.todo_fefu.ViewModel.SubtaskViewModel
 import com.example.todo_fefu.ViewModel.TaskViewModel
 import com.example.todo_fefu.data.task.Task
 import com.example.todo_fefu.databinding.FragmentUpdateTaskBinding
@@ -25,6 +26,7 @@ class UpdateTaskFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mTaskViewModel: TaskViewModel
+    private lateinit var mSubtaskViewModel: SubtaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +36,7 @@ class UpdateTaskFragment : Fragment() {
         val view = binding.root
 
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        mSubtaskViewModel = ViewModelProvider(this).get(SubtaskViewModel::class.java)
 
         binding.updateTitle.setText(args.currentTask.title)
         binding.updateDescription.setText(args.currentTask.description)
@@ -88,6 +91,7 @@ class UpdateTaskFragment : Fragment() {
 
     private fun deleteTaskFromDatabase() {
         mTaskViewModel.deleteTask(args.currentTask)
+        mSubtaskViewModel.deleteSubtasksFromTask(args.currentTask.id)
         Toast.makeText(requireContext(), "Successfully deleted!!!", Toast.LENGTH_LONG).show()
         val action =
             UpdateTaskFragmentDirections.actionUpdateTaskFragmentToTasksFragment(this.args.currentLists)
